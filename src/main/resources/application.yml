@@ -1,0 +1,17 @@
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.SQLServerDialect
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;database=INT_YSUMMA;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    username: sa
+    password: 123456
+    hikari:
+      connection-test-query: SELECT 1
+      validationTimeout: 120000
+  batch:
+    initialize-schema: always
+
+app:
+  chunk:
+    size: 4

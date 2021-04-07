@@ -1,0 +1,39 @@
+# Eclipse
+.classpath
+.project
+.settings/
+.svn/
+bin/
+
+# Intellij
+.idea/
+*.ipr
+*.iml
+*.iws
+.idea
+out/
+.DS_Store
+/bootstrap
+/dependencies.xml
+.java-version
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+.flattened-pom.xml
+generated-k8s/
+
+#VisualCode
+.vscode/
+.vscode
+
+# Project specific
+**/generated-k8s/
+
+.mvn/
+HELP.md
+mvnw
+mvnw.cmd
