@@ -41,7 +41,7 @@
 			<version>1.18.10</version>
 			<scope>provided</scope>
 		</dependency>
-                <dependency>
+		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
@@ -57,6 +57,20 @@
                 <target>1.8</target>
             </configuration>
         </plugin>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-jar-plugin</artifactId>
+			<version>3.1.0</version>
+			<configuration>
+				<archive>
+					<manifest>
+						<addClasspath>true</addClasspath>
+						<classpathPrefix>lib/</classpathPrefix>
+						<mainClass>com.ysumma.job.JobBatchLoadingApplication</mainClass>
+					</manifest>
+				</archive>
+			</configuration>
+		</plugin>
     </plugins>
 </build>
 
