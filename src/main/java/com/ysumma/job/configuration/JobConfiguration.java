@@ -65,11 +65,11 @@ public class JobConfiguration {
     public FlatFileItemReader<Company> reader() {
         FlatFileItemReader<Company> reader = new FlatFileItemReader<>();
         reader.setResource(new ClassPathResource("employee_v3.txt"));
-        reader.setLineMapper(new DefaultLineMapper<>() {{
+        reader.setLineMapper(new DefaultLineMapper<Company>() {{
             setLineTokenizer(new DelimitedLineTokenizer("|") {{
                 setNames(new String[] { "ruc", "name", "taxpayerStatus", "residenceCondition", "location", "roadType", "streetName", "zoneCode", "zoneType", "number", "interior", "lot", "department", "apple", "kilometer"});
             }});
-            setFieldSetMapper(new BeanWrapperFieldSetMapper<>() {{
+            setFieldSetMapper(new BeanWrapperFieldSetMapper<Company>() {{
                 setTargetType(Company.class);
             }});
         }});
