@@ -1,7 +1,6 @@
 package com.ysumma.job.configuration;
 
 import com.ysumma.job.model.Company;
-import com.ysumma.job.step.Step1;
 import com.ysumma.job.step.Step2;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
@@ -19,7 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.FileSystemResource;
 
 import javax.sql.DataSource;
 
@@ -36,6 +35,9 @@ public class JobConfiguration {
 
     @Value("${app.chunk.size}")
     private int chunkSize;
+
+    @Value("${app.file}")
+    private String fileRoute;
 
     @Bean
     Job helloWorldJob() {
@@ -64,10 +66,10 @@ public class JobConfiguration {
     @Bean
     public FlatFileItemReader<Company> reader() {
         FlatFileItemReader<Company> reader = new FlatFileItemReader<>();
-        reader.setResource(new ClassPathResource("employee_v3.txt"));
+        reader.setResource(new FileSystemResource(fileRoute));
         reader.setLineMapper(new DefaultLineMapper<Company>() {{
             setLineTokenizer(new DelimitedLineTokenizer("|") {{
-                setNames(new String[] { "ruc", "name", "taxpayerStatus", "residenceCondition", "location", "roadType", "streetName", "zoneCode", "zoneType", "number", "interior", "lot", "department", "apple", "kilometer"});
+                setNames(new String[] { "ruc", "name", "taxpayerStatus", "residenceCondition", "location", "roadType", "streetName", "zoneCode", "zoneType", "number", "interior", "lot", "department", "apple", "kilometer", "obs"});
             }});
             setFieldSetMapper(new BeanWrapperFieldSetMapper<Company>() {{
                 setTargetType(Company.class);

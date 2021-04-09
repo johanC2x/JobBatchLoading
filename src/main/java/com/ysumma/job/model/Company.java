@@ -21,12 +21,13 @@ public class Company {
     private String department;
     private String apple;
     private String kilometer;
+    private String obs;
 
     public Company(){
         super();
     }
 
-    public Company(String ruc, String name, String taxpayerStatus, String residenceCondition, String location, String roadType, String streetName, String zoneCode, String zoneType, String number, String interior, String lot, String department, String apple, String kilometer) {
+    public Company(String ruc, String name, String taxpayerStatus, String residenceCondition, String location, String roadType, String streetName, String zoneCode, String zoneType, String number, String interior, String lot, String department, String apple, String kilometer, String obs) {
         super();
         this.ruc = ruc;
         this.name = name;
@@ -43,6 +44,7 @@ public class Company {
         this.department = department;
         this.apple = apple;
         this.kilometer = kilometer;
+        this.obs = obs;
     }
 
 }

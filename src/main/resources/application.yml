@@ -15,3 +15,4 @@ spring:
 app:
   chunk:
     size: 4
+  file: C:\interbank\bie\resources\pruebas\employee_v4.txt

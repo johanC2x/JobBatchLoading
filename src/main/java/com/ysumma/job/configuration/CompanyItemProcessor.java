@@ -20,7 +20,8 @@ public class CompanyItemProcessor implements ItemProcessor<Company, Company> {
                 company.getLot(),
                 company.getDepartment(),
                 company.getApple(),
-                company.getKilometer());
+                company.getKilometer(),
+                company.getObs());
         return finalCompany;
     }
 }
