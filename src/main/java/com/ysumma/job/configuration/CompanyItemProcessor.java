@@ -6,6 +6,9 @@ import org.springframework.batch.item.ItemProcessor;
 public class CompanyItemProcessor implements ItemProcessor<Company, Company> {
     @Override
     public Company process(final Company company) throws Exception {
+        if(company.getRuc().equals("RUC")){
+            return null;
+        }
         final Company finalCompany = new Company(company.getRuc(),
                 company.getName(),
                 company.getTaxpayerStatus(),
