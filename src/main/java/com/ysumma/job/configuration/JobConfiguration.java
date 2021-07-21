@@ -87,7 +87,7 @@ public class JobConfiguration {
     public JdbcBatchItemWriter<Company> writer() {
         JdbcBatchItemWriter<Company> writer = new JdbcBatchItemWriter<>();
         writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>());
-        writer.setSql("INSERT INTO COMPANY(RUC,RAZON_SOCIAL,TAXPAYER_STATUS,RESIDENCE_CONDITION,LOCATION,ROAD_TYPE,STREET_NAME,ZONE_CODE,ZONE_TYPE,NUMBER,INTERIOR,LOT,DEPARTMENT,APPLE,KILOMETER) " +
+        writer.setSql("INSERT INTO int_company(RUC,RAZON_SOCIAL,TAXPAYER_STATUS,RESIDENCE_CONDITION,LOCATION,ROAD_TYPE,STREET_NAME,ZONE_CODE,ZONE_TYPE,NUMBER,INTERIOR,LOT,DEPARTMENT,APPLE,KILOMETER) " +
                 "VALUES (:ruc, :name, :taxpayerStatus, :residenceCondition, :location, :roadType, :streetName, :zoneCode, :zoneType, :number, :interior, :lot, :department, :apple, :kilometer)");
         writer.setDataSource(dataSource);
         return writer;
