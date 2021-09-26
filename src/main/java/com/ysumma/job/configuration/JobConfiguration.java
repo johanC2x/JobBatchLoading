@@ -34,7 +34,7 @@ public class JobConfiguration {
     @Autowired
     private DataSource dataSource;
     @Autowired
-    private StepTruncateTable stepTruncateTable;
+    private StepTruncateTable truncateTable;
 
     @Value("${app.chunk.size}")
     private int chunkSize;
@@ -71,7 +71,7 @@ public class JobConfiguration {
     public Step truncateTable() {
         return stepBuilderFactory
                 .get("truncateTable")
-                .tasklet(stepTruncateTable)
+                .tasklet(truncateTable)
                 .build();
     }
 
