@@ -67,7 +67,7 @@ public class JobConfiguration {
         return stepBuilderFactory.get("step2").tasklet(new Step2()).build();
     }
 
-    @Bean("stepTruncateTable")
+    @Bean
     public Step truncateTable() {
         return stepBuilderFactory
                 .get("truncateTable")
