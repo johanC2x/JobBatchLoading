@@ -2,6 +2,7 @@ package com.ysumma.job.configuration;
 
 import com.ysumma.job.model.Company;
 import com.ysumma.job.step.Step2;
+import com.ysumma.job.step.StepTruncateTable;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
@@ -32,6 +33,8 @@ public class JobConfiguration {
     private StepBuilderFactory stepBuilderFactory;
     @Autowired
     private DataSource dataSource;
+    @Autowired
+    private StepTruncateTable stepTruncateTable;
 
     @Value("${app.chunk.size}")
     private int chunkSize;
@@ -43,8 +46,9 @@ public class JobConfiguration {
     Job helloWorldJob() {
         return jobBuilderFactory.get("importEmployeeJob")
                 .incrementer(new RunIdIncrementer())
-                .flow(step1())
-                .end()
+                .start(truncateTable())
+                .next(step1())
+                //.end()
                 .build();
     }
 
@@ -61,6 +65,14 @@ public class JobConfiguration {
     @Bean
     public Step step2() {
         return stepBuilderFactory.get("step2").tasklet(new Step2()).build();
+    }
+
+    @Bean("stepTruncateTable")
+    public Step truncateTable() {
+        return stepBuilderFactory
+                .get("truncateTable")
+                .tasklet(stepTruncateTable)
+                .build();
     }
 
     @Bean
